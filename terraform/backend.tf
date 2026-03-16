@@ -3,7 +3,7 @@
 
 terraform {
   backend "s3" {
-    bucket         = var.S3_bucket
+    bucket         = "terraform-state-spring-boot-app-mmankos"
     key            = "terraform.tfstate"
     region         = "us-east-1"
     encrypt        = true

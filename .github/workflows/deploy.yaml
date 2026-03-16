@@ -15,7 +15,6 @@ jobs:
 
     env:
       TF_VAR_alarm_email: ${{ secrets.TF_VAR_ALARM_EMAIL }}
-      TF_VAR_S3_bucket: ${{ secrets.S3_BUCKET }}
 
     steps:
       - name: Checkout Repository
