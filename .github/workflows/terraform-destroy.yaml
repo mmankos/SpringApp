@@ -14,7 +14,7 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v3
-      
+
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v2
         with:
@@ -44,22 +44,22 @@ jobs:
         run: |
           bucket=${{ secrets.S3_BUCKET }}
           token=""
-          
+
           while : ; do
             resp=$(aws s3api list-object-versions \
                       --bucket "$bucket" \
                       --output json \
                       ${token:+--starting-token "$token"})
-          
+
             del=$(jq '{
                        Objects: ((.Versions     // [])
                               +  (.DeleteMarkers // []))
                               | map({Key,VersionId})
                      }' <<<"$resp")
-          
+
             [ "$(jq '.Objects|length' <<<"$del")" -eq 0 ] && break
             aws s3api delete-objects --bucket "$bucket" --delete "$del"
-          
+
             token=$(jq -r '.NextToken // empty' <<<"$resp")
             [ -z "$token" ] && break
           done

@@ -53,5 +53,10 @@ variable "common_tags" {
 variable "alarm_email" {
 description = "Billing alarm email"
   type        = string
-  default     = "marianferenc59@gmail.com"
 }
+
+variable "S3_bucket" {
+description = "S3 bucket name"
+  type        = string
+}
+
