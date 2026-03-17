@@ -53,4 +53,5 @@ variable "common_tags" {
 variable "alarm_email" {
 description = "Billing alarm email"
   type        = string
+  default     = "mmankos@protonmail.com"
 }

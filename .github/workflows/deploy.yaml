@@ -13,9 +13,6 @@ jobs:
     name: "Terraform Infrastructure"
     runs-on: ubuntu-latest
 
-    env:
-      TF_VAR_alarm_email: ${{ secrets.TF_VAR_ALARM_EMAIL }}
-
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v3
